@@ -1,6 +1,6 @@
 //DEPENDENCIES
 const dialogFormEl = $('#formModal');
-const taskNameEl = $('#task');
+const taskNameEl = $('#title');
 const taskDateEl = $('#date');
 const taskDescEl = $('#description');
 const modalSubmitEl = $('#modalSubmit');
@@ -104,12 +104,13 @@ function renderTaskList() {
 
 // A function to handle adding a new task
 function handleAddTask(event){
-    
-    // Create newTask object
+  console.log()
+    console.log('testing', $('#task').val())
+    // Create newTask object  
     newTask = {
         id: generateTaskId(),
-        // name: taskNameEl.val(),
-        name: 'some name',
+        name: taskNameEl.val(),
+        // name: 'some name',
         date: taskDateEl.val(),
         description: taskDescEl.val().trim(),
         status: 'to-do',
@@ -117,6 +118,8 @@ function handleAddTask(event){
     
     // Call projects and add new task
     const projects = readProjectsFromStorage();
+    console.log('newTask', newTask);
+    console.log('projects', projects)
     projects.push(newTask);
 
     // Save the updated projects array to localStorage
